@@ -20,11 +20,8 @@ const server = http.createServer((req, res) => {
     pathname === "/" ? "index.html" : pathname,
   );
 
-  console.log("Trying to read file at:", filePaths);
-
   fs.readFile(filePaths, "utf-8", (err, data) => {
     if (err) {
-      console.error("File error:", err.message);
       res.writeHead(404, { "Content-Type": "text/html" });
       res.end("<h1>404 Not Found</h1>");
     } else {
