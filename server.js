@@ -14,11 +14,24 @@ const port = process.env.PORT;
 const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
   let pathname = parsedUrl.pathname;
-  let filePaths = path.join(
-    __dirname,
-    "folder",
-    pathname === "/" ? "index.html" : pathname,
-  );
+  let filePaths = "";
+
+  switch (pathname) {
+    case "/":
+      filePaths = path.join(__dirname, "folder", "index.html");
+      break;
+    case "/about":
+      filePaths = path.join(__dirname, "folder", "about.html");
+      break;
+    case "/contact":
+      filePaths = path.join(__dirname, "folder", "contactUs.html");
+      break;
+    case "/sth":
+      filePaths = path.join(__dirname, "folder", "sth.html");
+      break;
+    default:
+      filePaths = path.join(__dirname, "folder", "404.html");
+  }
 
   fs.readFile(filePaths, "utf-8", (err, data) => {
     if (err) {
