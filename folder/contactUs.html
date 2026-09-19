@@ -3,10 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>something</title>
+    <title>Contact Us</title>
   </head>
   <body>
-    <h1>sth</h1>
-    <p>lorem10</p>
+    <h1>Contact Us</h1>
+    <p>Please feel free to reach out to us with any questions or feedback.</p>
+    <form action="/contact" method="post">
+      <label for="name">Name:</label><br />
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" rows="5" required></textarea
+      ><br /><br />
+
+      <button type="submit">send</button>
+    </form>
   </body>
 </html>
