@@ -11,30 +11,30 @@ const __dirname = path.dirname(__filename);
 
 const port1 = process.env.EXPRESS_PORT || 3000;
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "folder")));
 
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, "public", "index.html"));
+  res.status(200).sendFile(path.join(__dirname, "folder", "index.html"));
 });
 
 app.get("/about", (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, "public", "about.html"));
+  res.status(200).sendFile(path.join(__dirname, "folder", "about.html"));
 });
 
 app
   .route("/contact")
   .get((req, res) => {
-    res.status(200).sendFile(path.join(__dirname, "public", "contactUs.html"));
+    res.status(200).sendFile(path.join(__dirname, "folder", "contactUs.html"));
   })
   .post((req, res) => {
     console.log(req.body);
-    res.status(201).sendFile(path.join(__dirname, "public", "404.html"));
+    res.status(201).sendFile(path.join(__dirname, "folder", "contactUs.html"));
   });
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
+  res.status(404).sendFile(path.join(__dirname, "folder", "404.html"));
 });
 
 app.listen(port1, () => {
